@@ -38,6 +38,16 @@ export const todoReducer = (state, action) => {
         }
       })
       return clickNewState;
+    // Step 5 - Clearing completed todos
+    case "COMPLETED_TODO":
+      let completed = state.filter(state => {
+        if(state.completed === true) {
+          return !state.completed;
+        } else {
+          return state;
+        }
+      })
+      return completed;
       
     default: return state;
   }

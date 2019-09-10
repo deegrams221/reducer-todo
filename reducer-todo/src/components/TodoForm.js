@@ -4,14 +4,14 @@ import {initialState, todoReducer} from '../reducers/TodoReducer';
 
 const TodoForm = (props) => {
 // set up dispatch
-  const [newtodo, setNewtodo] = useState('')
+  const [newtodo, setNewTodo] = useState('')
   const [state, dispatch] = useReducer(todoReducer, initialState)
   console.log('state',state)
 
   const handlechange = (e) => {
     let value = e.target.value;
       if (value !== null) {
-        setNewtodo(value)
+        setNewTodo(value)
       }
   }
   const handleSubmit = (e) => {
@@ -20,17 +20,17 @@ const TodoForm = (props) => {
   return(
     <div>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="completed-todo">
           {state.map(state => {
             return (
                 // displays the todo list above the add todo form
-              <p onClick={() => dispatch({type: "TOGGLE_TODO", payload:state.id})}>{state.item}</p>
+              <p onClick={() => dispatch({type: "TOGGLE_TODO", payload:state.id})} style={state.completed ? {textDecoration: 'line-through'} : null}>{state.item}</p>
             )
           })}
         </div>
         <input type="text" name="todo" placeholder="...todo" value={newtodo} onChange={handlechange}></input>
         <button onClick={()=> dispatch({type: "ADD_TODO", payload:newtodo})}>Add Todo</button>
-        <button onClick={props.clearHandler}>Clear Completed</button>
+        <button onClick={() => dispatch({type: "COMPLETED_TODO"})}>Clear Completed</button>
       </form>
     </div>
   )
