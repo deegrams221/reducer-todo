@@ -25,6 +25,20 @@ export const todoReducer = (state, action) => {
           id: Date.now()
         }
       ]
+    // Step 4 - Toggle the completed field
+    case "TOGGLE_TODO":
+      let clickNewState = state.map(state => {
+        if(state.id === action.payload) {
+          return{
+            ...state,
+            completed: !state.completed
+          }
+        } else {
+          return state;
+        }
+      })
+      return clickNewState;
+      
     default: return state;
   }
 };

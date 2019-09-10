@@ -23,7 +23,8 @@ const TodoForm = (props) => {
         <div>
           {state.map(state => {
             return (
-              <p onClick={() => dispatch({type: "TOGGLE_TODO", payload:state.id})}>{state.item + ', '}</p>
+                // displays the todo list above the add todo form
+              <p onClick={() => dispatch({type: "TOGGLE_TODO", payload:state.id})}>{state.item}</p>
             )
           })}
         </div>
