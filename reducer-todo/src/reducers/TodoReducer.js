@@ -16,7 +16,6 @@ export const todoReducer = (state, action) => {
     case "":
       return {
         ...state,
-        
       };
     default: 
       return state;
