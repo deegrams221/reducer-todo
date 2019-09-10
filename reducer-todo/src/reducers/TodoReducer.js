@@ -7,17 +7,17 @@ export const initialState = {
 };
 
 export const todoReducer = (state, action) => {
-  switch(action.type) {
-    case "":
-      return {
-        ...state,
+  // switch(action.type) {
+  //   case "":
+  //     return {
+  //       ...state,
         
-      };
-    case "":
-      return {
-        ...state,
-      };
-    default: 
+  //     };
+  //   case "":
+  //     return {
+  //       ...state,
+  //     };
+    // default: 
       return state;
-  }
+  // }
 };
